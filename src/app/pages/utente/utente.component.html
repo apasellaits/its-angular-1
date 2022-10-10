@@ -1,0 +1,130 @@
+<main class="container">
+    <form class="needs-validation" [class.was-validated]="showErrors" #utente="ngForm">
+        <h1 class="h3 mb-3 fw-normal text-center">Inserisci dati</h1>
+
+        <div class="form-floating">
+            <select id="ragionesocialeInput" class="form-select" name="userType" [(ngModel)]="jsonIn.userType" required>
+
+
+                <option value="PersonaGiuridica" selected>Persona Giuridica</option>
+                <option value="PersonaFisica">Persona Fisica</option>
+
+            </select>
+        </div>
+
+
+        <div *ngIf="jsonIn.userType==='PersonaGiuridica'">
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="ragioneSocialeInput" name="ragioneSocialeInput"
+                    placeholder="Ragione Sociale" [(ngModel)]="jsonIn.ragioneSociale" required>
+                <label for="nameInput">Ragione Sociale</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="pecInput" name="pecInput" placeholder="PEC"
+                    [(ngModel)]="jsonIn.pec" required>
+                <label for="pecInput">Pec</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="faxInput" name="faxInput" placeholder="FAX"
+                    [(ngModel)]="jsonIn.fax" required>
+                <label for="faxInput">FAX</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="partitaIvaInput" name="partitaIvaInput"
+                    placeholder="Partta Iva" [(ngModel)]="jsonIn.partitaIva" required>
+                <label for="faxInput">Partita Iva</label>
+            </div>
+        </div>
+
+        <div *ngIf="jsonIn.userType==='PersonaFisica'">
+            <div class="form-floating">
+                <input type="name" class="form-control" id="nameInput" name="nameInput" placeholder="Name"
+                    [(ngModel)]="jsonIn.name" required>
+                <label for="nameInput">Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="surname" class="form-control" id="surnameInput" name="surnameInput" placeholder="Surname"
+                    [(ngModel)]="jsonIn.surname" required>
+                <label for="nameInput">Cognome</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="sexInput" name="sexInput" placeholder="Sesso"
+                    [(ngModel)]="jsonIn.sesso" required>
+                <label for="sexInput">Sesso</label>
+                <select id="sexInput" class="form-select">
+                    <option selected>Maschio</option>
+                    <option>Femmina</option>
+                </select>
+            </div>
+            <div class="form-floating">
+                <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="Email"
+                    [(ngModel)]="jsonIn.email" required>
+                <label for="emailInput">Email</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="phoneInput" name="phoneInput" placeholder="Phone"
+                    [(ngModel)]="jsonIn.telefono" required>
+                <label for="phoneInput">Telefono</label>
+            </div>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="addressInput" name="addressInput" placeholder="Address"
+                    [(ngModel)]="jsonIn.indirizzo.via" required>
+                <label for="addressInput">Indirizzo</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="addressNumInput" name="addressNumInput"
+                    placeholder="Address Num" [(ngModel)]="jsonIn.indirizzo.numeroCivico" required>
+                <label for="addressNumInput">Numero Civico</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="cityInput" name="cityInput" placeholder="City"
+                    [(ngModel)]="jsonIn.indirizzo.comune" required>
+                <label for="cityInput">Comune</label>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="provinceInput" name="provinceInput" placeholder="Province"
+                    [(ngModel)]="jsonIn.indirizzo.provincia" required>
+                <label for="provinceInput">Provincia</label>
+                <select id="provinceInput" class="form-select">
+                    <option selected>...</option>
+                    <option>Cuneo</option>
+                    <option>Bari</option>
+                    <option>Torino</option>
+                </select>
+            </div>
+            <div class="form-floating">
+                <input type="text" class="form-control" id="stateInput" name="stateInput" placeholder="State"
+                    [(ngModel)]="jsonIn.indirizzo.stato" required>
+                <label for="stateInput">Stato</label>
+                <select id="stateInput" class="form-select">
+                    <option selected>Italia</option>
+                    <option>Francia</option>
+                    <option>Uk</option>
+                    <option>China</option>
+                </select>
+            </div>
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="maggiorenne" [(ngModel)]="jsonIn.maggiorenne"> Sei maggiorenne?
+                </label>
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="rememberMe" [(ngModel)]="jsonIn.rememberMe"> Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="button">
+            Sign in
+        </button>
+    </form>
+</main>
