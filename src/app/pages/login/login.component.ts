@@ -27,5 +27,10 @@ export class LoginComponent {
     }
   }
 
+  eyeCheck = {
+    enable: '🐵',
+    disabled: '🙈'
+  }
+
 
 }

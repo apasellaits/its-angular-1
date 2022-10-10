@@ -15,7 +15,7 @@
                     <label for="passwordInput">Password</label>
                 </div>
                 <span class="input-group-text" role="button" (click)="showPassword = !showPassword">
-                    👁
+                    {{showPassword?eyeCheck.disabled : eyeCheck.enable}}
                 </span>
             </div>
         </div>
@@ -29,6 +29,5 @@
         <button class="w-100 btn btn-lg btn-primary" type="button" (click)="signIn()">
             Sign in
         </button>
-        <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
     </form>
 </main>
