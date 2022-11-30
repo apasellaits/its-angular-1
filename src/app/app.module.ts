@@ -12,8 +12,12 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DrinkComponent } from './pages/drink/drink.component';
-import { SearchComponent } from './pages/search/search.component';
-import { CardDrinkComponent } from './shared/card-drink/card.drink.component';
+import { OrdiniComponent } from './pages/ordini/ordini.component';
+import { CartItemComponent } from './shared/cartItem/cartItem.component';
+import { IngredientsComponent } from './pages/ingredients/ingredients.component';
+import { RouterModule } from '@angular/router';
+
+
 
 @NgModule({
   declarations: [
@@ -21,8 +25,9 @@ import { CardDrinkComponent } from './shared/card-drink/card.drink.component';
     LoginComponent,
     HomeComponent,
     DrinkComponent,
-    SearchComponent,
-    CardDrinkComponent,
+    OrdiniComponent,
+    CartItemComponent,
+    IngredientsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,7 @@ import { CardDrinkComponent } from './shared/card-drink/card.drink.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    RouterModule,
     BlockUIModule.forRoot(),
     BlockUIHttpModule.forRoot(),
   ],

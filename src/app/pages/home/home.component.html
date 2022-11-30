@@ -1,35 +1,94 @@
-<nav class="navbar bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand">The cocktail DB</a>
-    <button class="btn btn-outline-info" routerLink="/search">
-      Search
+<main class="container">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">The CocktailDB</a>
+    <button class="navbar-toggler collapsed" (click)="toggleCollapsed()" id="hamburger" type="button"
+      data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
 
+    <div class="navbar-collapse collapse" id="navbarSupportedContent"
+      [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+      <ul class="navbar-nav mr-auto d-flex flex-row justify-content-around align-items-center">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="'/home'"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+              fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+              <path
+                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+            </svg></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="randomCocktail()"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+              fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z" />
+              <path
+                d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z" />
+            </svg>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/ordini'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart4"
+              viewBox="0 0 16 16">
+              <path
+                d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" [(ngModel)]="typeOfSearch" [(ngModel)]="isChecked"
+            [checked]="isChecked" name="typeOfSearch" value="Cocktail">
+          <label class="form-check-label" for="typeOfSearch">Cocktail</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" [(ngModel)]="typeOfSearch" [(ngModel)]="isChecked"
+            [checked]="isChecked" name="typeOfSearch" value="Ingredient">
+          <label class="form-check-label" for="typeOfSearch">Ingredient</label>
+        </div>
+        <input class="form-control mr-sm-2" type="search" name="searchNameIng" [(ngModel)]="searchNameIng"
+          [disabled]="isChecked === false" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="search()" type="submit"
+          [disabled]="isChecked === false">Search</button>
+      </form>
+    </div>
+  </nav>
+  <nav class="mt-3 mb-3">
+    <div class="pagination d-inline-flex p-2 flex-wrap">
+      <a class="page-link" *ngFor="let letter of letters" (click)="searchByLetter(letter)">{{letter}}</a>
+    </div>
+  </nav>
+
+  <div>
+    <h1>Top Drinks</h1>
+    <div class="row col-sm-12 col-md-6 col-lg-4 my-2">
+      <p>Risultati ricerca: {{drinks.length}}</p>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-4 my-2" *ngFor="let drink of drinks" role="button"
+        [routerLink]="'/drink/' + drink.idDrink">
+        <div class="card">
+          <img [src]="drink.strDrinkThumb" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ drink.strDrink}}</h5>
+            <!-- <p> {{drink.strInstructions}}</p> -->
+            <div class="btn btn-primary">Dettaglio</div>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">{{ drink.strCategory }}</small>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="drinks.length === 0">
+        <h1>Nessun risultato</h1>
+      </div>
+    </div>
+
   </div>
-</nav>
-<nav class="mt-3">
-  <ul class="pagination pagination-sm">
-    <li class="page-item" role="button"
-      [class.active]="letter === firstLetter"
-      *ngFor="let letter of letters">
-      <a class="page-link" (click)="changeFirstLetter(letter)">
-        {{ letter }}
-      </a>
-    </li>
-  </ul>
-</nav>
-<h1>Featured</h1>
-<app-card-drink class=""  [drink]="drinks[0]" [featured]="true"></app-card-drink>
-<h1>Top Drinks</h1>
-<div class="row">
-  <h1>Ci sono {{drinks.length}} drinks</h1>
-  <div class="col-sm-12 col-md-4 col-lg-3 my-2"
-      *ngFor="let drink of drinks"
-      >
-      <app-card-drink 
-              [drink]="drink"
-              (onSelectChange)="onCardSelectChange(drink, $event)"
-              ></app-card-drink>
-              <!-- (selected)="onSelect(drink)" -->
-  </div>
-</div>
+
+
+</main>
