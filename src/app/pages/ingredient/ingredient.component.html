@@ -1,0 +1,65 @@
+<main class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">The CocktailDB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" [routerLink]="'/home'"><svg xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="25" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z" />
+                        </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="randomCocktail()"><svg xmlns="http://www.w3.org/2000/svg" width="25"
+                            height="25" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z" />
+                            <path
+                                d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z" />
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" id="inputSearch" type="search" placeholder="Search"
+                    aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchByName()"
+                    (click)="featuredIngredients()" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <h1>Featured Ingredient: </h1>
+
+
+    <div class="row col-sm-12 col-md-6 col-lg-4 my-2">
+        <p>Risultati ricerca: {{drinks.length}}</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 my-2" *ngFor="let drink of drinks" role="button"
+            [routerLink]="'/drink/' + drink.idDrink">
+            <div class="card">
+                <img [src]="drink.strDrinkThumb" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{ drink.strDrink}}</h5>
+                    <!-- <p> {{drink.strInstructions}}</p> -->
+                    <div class="btn btn-primary">Dettaglio</div>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">{{ drink.strCategory }}</small>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="drinks.length === 0">
+            <h1>Nessun risultato</h1>
+        </div>
+    </div>
+</main>
